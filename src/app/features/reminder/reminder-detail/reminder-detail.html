@@ -1,0 +1,83 @@
+<div class="reminder-detail-container">
+  <app-title text="Напоминание"></app-title>
+  <mat-card class="form-card">
+    <mat-card-content>
+      @if (remind()) {
+        <form [formGroup]="reminderForm" class="reminder-form">
+          <div class="form-row">
+            <mat-form-field class="form-field">
+              <mat-label>Дата и время создания</mat-label>
+              <input
+                matInput
+                type="datetime-local"
+                formControlName="creationDateTime">
+            </mat-form-field>
+
+            <mat-form-field class="form-field">
+              <mat-label>Дата и время выполнения</mat-label>
+              <input
+                matInput
+                type="datetime-local"
+                formControlName="executionDateTime">
+            </mat-form-field>
+
+            <mat-form-field class="form-field">
+              <mat-label>Статус</mat-label>
+              <mat-select
+                formControlName="status">
+                @for (status of statuses; track status.name) {
+                  <mat-option [value]="status.name">{{ status.name }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field class="form-field-full">
+              <mat-label>Краткое описание</mat-label>
+              <input
+                matInput
+                formControlName="shortDescription"
+                placeholder="Введите краткое описание напоминания"
+                maxlength="200">
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field class="form-field-full">
+              <mat-label>Полное описание</mat-label>
+              <textarea
+                matInput
+                rows="10"
+                formControlName="fullDescription"
+                placeholder="Введите подробное описание напоминания"
+                maxlength="2000">
+                  </textarea>
+            </mat-form-field>
+          </div>
+        </form>
+
+      }
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="reminder-detail-footer">
+        <div class="reminder-detail-footer-left">
+          <button
+            mat-button
+            (click)="openMainPage()"
+          >
+            Назад
+          </button>
+        </div>
+
+        <button
+          mat-button
+          (click)="onSave(reminderForm.value)"
+        >
+          Сохранить
+        </button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+
+</div>

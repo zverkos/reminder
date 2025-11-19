@@ -1,0 +1,30 @@
+.reminder-detail-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.reminder-detail-footer {
+  display: flex;
+  margin: 0 16px 8px;
+  &-left {
+    flex: 1 0 auto;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  flex: 1;
+  min-width: 200px;
+}
+.form-field-full {
+  width: 100%;
+}
+.backward {
+  flex: 1 0 auto;
+}
